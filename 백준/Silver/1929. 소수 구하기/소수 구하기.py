@@ -1,14 +1,18 @@
-def sosu(num):
-    if num== 1:
-        return False
-    else:
-        for i in range(2, int(num**0.5)+1):
-            if num % i == 0:
-                return False
-        return True
+a, b= map(int,input().split())
 
-a, b = map(int, input().split())
+si = [True] * (b+1)
+
+key = int(b ** 0.5)
+
+for i in range(2,key + 1):
+    if si[i] == True:
+        for j in range(i+i, b+1, i):
+            si[j] = False
+
+
 
 for i in range(a, b+1):
-    if sosu(i):
+    if i < 2:
+        continue
+    elif si[i]:
         print(i)
